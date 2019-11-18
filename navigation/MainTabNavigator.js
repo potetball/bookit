@@ -6,6 +6,7 @@ import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
 import LinksScreen from '../screens/LinksScreen';
 import SettingsScreen from '../screens/SettingsScreen';
+import BookingScreen from '../screens/BookingScreen';
 
 const config = Platform.select({
   web: { headerMode: 'screen' },
@@ -15,6 +16,7 @@ const config = Platform.select({
 const HomeStack = createStackNavigator(
   {
     Home: HomeScreen,
+    Booking: BookingScreen
   },
   config
 );
@@ -61,7 +63,7 @@ const SettingsStack = createStackNavigator(
 SettingsStack.navigationOptions = {
   tabBarLabel: 'Settings',
   tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'} />
+    <TabBarIcon style={styles.backgroundColor} focused={focused} name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'} />
   ),
 };
 
@@ -72,6 +74,10 @@ const tabNavigator = createBottomTabNavigator({
   LinksStack,
   SettingsStack,
 });
+
+const styles = {
+  backgroundColor: "#697293"
+}
 
 tabNavigator.path = '';
 
